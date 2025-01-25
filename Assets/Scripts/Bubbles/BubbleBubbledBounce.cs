@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BubbleBubbledBounce : MonoBehaviour
 {
-    public float bounceForce = 10f;
+    public float bounceForce = 15f;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,6 +12,7 @@ public class BubbleBubbledBounce : MonoBehaviour
             if (playerRb != null)
             {
                 playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
+                collision.GetComponent<PlayerDefeat>().Defeat();
             }
         }
     }
