@@ -57,17 +57,24 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(!canMove) return;
-        if (_dashState == DashState.CantDash && _isGrounded)
-            _dashState = DashState.CanDash;
+        if(canMove) {
+            if (_dashState == DashState.CantDash && _isGrounded)
+                _dashState = DashState.CanDash;
 
-        rb.gravityScale = _dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : _settingsSO.MovingGravityScale;
-        transform.Translate(move * _settingsSO.Speed * (_jumpState == JumpState.Jumping ? _settingsSO.AirSpeedCoef : 1f) * Time.deltaTime);
-        JumpBehaviour();
+            rb.gravityScale = _dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : _settingsSO.MovingGravityScale;
+            transform.Translate(move * _settingsSO.Speed * (_jumpState == JumpState.Jumping ? _settingsSO.AirSpeedCoef : 1f) * Time.deltaTime);
+            JumpBehaviour();
+        }
+        else {
+            _dashState = DashState.CantDash;
+            _jumpState = JumpState.CantJump;
+            _isGrounded = false;
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
     {
+        if(!canMove) return;
         Vector2 inputMove = context.action.ReadValue<Vector2>().normalized;
         move = new Vector2(inputMove.x, move.y);
         if(move.x != 0f && _dashState != DashState.Dashing)
@@ -76,6 +83,7 @@ public class PlayerController : MonoBehaviour
 
     private void JumpBehaviour()
     {
+        if(!canMove) return;
         _isGrounded = IsGrounded();
         switch (_jumpState)
         {
@@ -98,6 +106,7 @@ public class PlayerController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if(!canMove) return;
         if (_isGrounded && _jumpState == JumpState.CanJump)
         {
             _jumpState = JumpState.Jumped;
@@ -108,6 +117,7 @@ public class PlayerController : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context)
     {
+        if(!canMove) return;
         if (_dashState == DashState.CanDash)
         {
             _dashState = DashState.Dashing;
