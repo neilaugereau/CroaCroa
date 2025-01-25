@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 15937536140373005}
   - component: {fileID: 2902501062225574686}
   - component: {fileID: 7503957993664850117}
+  - component: {fileID: 8968392677737779415}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -417,6 +418,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8968392677737779415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682380314593091866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4103d54ce71a06479e2a98a4d6034bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnGaugeChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7358622142037890131
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +458,7 @@ Transform:
   m_GameObject: {fileID: 7358622142037890131}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.113, y: -0.231, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
