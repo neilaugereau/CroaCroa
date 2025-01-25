@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private DashState _dashState = DashState.CanDash;
 
+    public bool canMove = true;
+
     private IEnumerator Dashed(bool floorDash)
     {
         yield return new WaitForSeconds(_settingsSO.DashDuration);
@@ -52,6 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if(!canMove) return;
         if (_dashState == DashState.CantDash && _isGrounded)
             _dashState = DashState.CanDash;
 
