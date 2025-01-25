@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private JumpState _jumpState = JumpState.CanJump;
-    private bool _isGrounded;
+    private bool _isGrounded = true;
 
     [SerializeField]
     private DashState _dashState = DashState.CanDash;
@@ -71,14 +71,18 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if(canMove) {
+            _isGrounded = IsGrounded();
+
             if (_dashState == DashState.CantDash && _isGrounded)
                 _dashState = DashState.CanDash;
             
-            animator.SetBool("isGrounded", !_isGrounded);
 
             rb.gravityScale = _dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : _settingsSO.MovingGravityScale;
             transform.Translate(move * _settingsSO.Speed * (_jumpState == JumpState.Jumping ? _settingsSO.AirSpeedCoef : 1f) * Time.deltaTime);
             JumpBehaviour();
+
+            animator.SetBool("isGrounded", _isGrounded);
+            animator.SetBool("isFalling", rb.linearVelocityY < 0f);
         }
         else {
             _dashState = DashState.CantDash;
@@ -100,7 +104,6 @@ public class PlayerController : MonoBehaviour
     private void JumpBehaviour()
     {
         if(!canMove) return;
-        _isGrounded = IsGrounded();
         switch (_jumpState)
         {
             case JumpState.Jumping:

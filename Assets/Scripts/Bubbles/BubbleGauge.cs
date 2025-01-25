@@ -29,6 +29,10 @@ public class BubbleGauge : MonoBehaviour
         }
     }
 
+    public void Init() {
+        Gauge = 0f;
+    }
+
     public void Hit(float damages)
     {
         Gauge += damages;

@@ -8,8 +8,14 @@ public class BubbleShooter : MonoBehaviour
     public PlayerController playerController;
     public Transform shootPoint;
     public BubbleType bubbleType;
+
+    private Animator animator;
     
     private bool isShooting = false;
+
+    private void Awake() {
+        animator = GetComponent<Animator>();
+    }
     
     public void ShootingBurst(InputAction.CallbackContext context)
     {
@@ -19,6 +25,7 @@ public class BubbleShooter : MonoBehaviour
     private IEnumerator ShootBurst()
     {
         isShooting = true;
+        animator.SetBool("isShooting", true);
 
         for (int i = 0; i < bubbleType.burstCount; i++)
         {
@@ -42,5 +49,6 @@ public class BubbleShooter : MonoBehaviour
         }
 
         isShooting = false;
+        animator.SetBool("isShooting", false);
     }
 }

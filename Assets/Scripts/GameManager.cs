@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     private Transform player2Spawn;
     [SerializeField]
     private TMP_Text timerText;
+    [SerializeField]
+    private Canvas canvas;
 
     private BubbleType _playerOneWeapon;
     private BubbleType _playerTwoWeapon;
@@ -62,7 +64,7 @@ public class GameManager : MonoBehaviour
         if(!isFightActive) return;
 
         fightCountdown -= Time.deltaTime;
-        timerText.text = Mathf.RoundToInt(fightCountdown).ToString();
+        timerText.text = Mathf.Floor(fightCountdown / 60f).ToString() + " : " + Mathf.Floor(fightCountdown % 60f).ToString();
 
         if(hasPlayer1Scored)
             EndRound(true);
@@ -99,8 +101,10 @@ public class GameManager : MonoBehaviour
         player1.GetComponent<Transform>().position = player1Spawn.position;
         player2.GetComponent<Transform>().position = player2Spawn.position;
 
-        // player1.GetComponent<BubbleGauge>().Init();
-        // player2.GetComponent<BubbleGauge>().Init();
+        player1.GetComponent<BubbleGauge>().Init();
+        player2.GetComponent<BubbleGauge>().Init();
+
+        // reset bubble
     }
 
     void EndFight(bool hasPlayer1Won) {
