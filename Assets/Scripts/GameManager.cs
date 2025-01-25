@@ -15,15 +15,20 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int roundToWinCount = 3;
     [SerializeField]
-    private Object player1;
+    private GameObject player1;
     [SerializeField]
-    private Object player2;
+    private GameObject player2;
     [SerializeField]
     private Transform player1Spawn;
     [SerializeField]
     private Transform player2Spawn;
     [SerializeField]
     private TMP_Text timerText;
+
+    private BubbleType _playerOneWeapon;
+    private BubbleType _playerTwoWeapon;
+    private int _playerOneSkinID;
+    private int _playerTwoSkinID;
 
     private bool hasPlayer1Scored;
     private bool hasPlayer2Scored;
@@ -65,6 +70,16 @@ public class GameManager : MonoBehaviour
             EndRound(false);
         else if(fightCountdown <= 0f)
             EndRound(player1TrappedCount >= player2TrappedCount);
+    }
+
+    public void LoadData(int skinOneID, BubbleType weaponOne, int skinTwoID, BubbleType weaponTwo)
+    {
+        _playerOneSkinID = skinOneID;
+        _playerTwoSkinID = skinTwoID;
+        // @todo Load right animations depending of the skin
+
+        player1.GetComponent<BubbleShooter>().bubbleType = weaponOne;
+        player2.GetComponent<BubbleShooter>().bubbleType = weaponTwo;
     }
 
     public void StartFight() {
