@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &198333365 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1206547132118292385, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
-  m_PrefabInstance: {fileID: 302945574}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &302945574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,10 +130,6 @@ PrefabInstance:
     - target: {fileID: 682380314593091866, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 682380314593091866, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1206547132118292385, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
       propertyPath: m_LocalPosition.x
@@ -180,20 +171,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2902501062225574686, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
-      propertyPath: bubbleType
-      value: 
-      objectReference: {fileID: 11400000, guid: 8af6c8d5cd8833d4aa94268367c5b00f, type: 2}
-    - target: {fileID: 2902501062225574686, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
-      propertyPath: shootPoint
-      value: 
-      objectReference: {fileID: 1988439535}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1206547132118292385, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1988439535}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
 --- !u!1 &519420028
@@ -416,37 +396,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1988439534
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1988439535}
-  m_Layer: 0
-  m_Name: shootPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1988439535
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988439534}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 198333365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2134878412
 PrefabInstance:

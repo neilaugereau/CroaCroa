@@ -20,4 +20,4 @@ MonoBehaviour:
   DashDuration: 0.15
   DashForce: 20
   DashAirGravityScale: 0
-  DashCooldown: 1
+  FloorDashCooldown: 0.8
