@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,18 +14,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] 
     private GameObject _playerTwo;
     #endregion
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void OnEnable()
-    {
-        _playerOne.GetComponent<BubbleGauge>().OnGaugeChange.AddListener(UpdateSliderOne);
-    }
-
+    
+    
+    
     // Update is called once per frame
-    void UpdateSliderOne(float value, bool isPlayerOne)
+    private void FixedUpdate()
     {
-        if(isPlayerOne)
-            _bubbleGaugeOne.value = value;
-        else
-            _bubbleGaugeTwo.value = value;
+        _bubbleGaugeOne.value = _playerOne.GetComponent<BubbleGauge>().Gauge;
+        _bubbleGaugeTwo.value = _playerTwo.GetComponent<BubbleGauge>().Gauge;
     }
 }
