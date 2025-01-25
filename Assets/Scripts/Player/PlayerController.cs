@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
         switch (_jumpState)
         {
             case JumpState.Jumping:
-                if (_isGrounded && rb.linearVelocityY < 0f)
+                if (_isGrounded && rb.linearVelocityY <= 0f)
                 {
                     _jumpState = JumpState.CanJump;
                     rb.linearVelocityY -= _settingsSO.AirGravityForce * Time.deltaTime * (_dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : 1f);
@@ -124,6 +124,7 @@ public class PlayerController : MonoBehaviour
             _jumpState = JumpState.Jumping;
             StopCoroutine(Dashed());
             _dashState = DashState.CanDash;
+            rb.linearVelocityY = 0;
             rb.linearVelocityY += _settingsSO.JumpForce;
             Debug.Log($"{name} jumped");
         }
