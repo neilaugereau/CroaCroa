@@ -17,7 +17,7 @@ public class BubbleGauge : MonoBehaviour
             {
                 _gauge = 0f;
             }
-            else if(value > 100f)
+            else if(value >= 100f)
             {
                 _gauge = 100f;
                 isBubbled = true;

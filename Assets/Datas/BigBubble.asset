@@ -16,6 +16,6 @@ MonoBehaviour:
   sizeThreshold: {x: 1, y: 1}
   gravityThreshold: {x: -0.5, y: 0.5}
   dispersionThreshold: {x: 0, y: 0}
-  shootForce: 15
-  fireRate: 0.5
-  burstCount: 1
+  shootForce: 10
+  fireRate: 0.1
+  burstCount: 5

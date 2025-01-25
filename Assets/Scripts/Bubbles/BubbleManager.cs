@@ -40,7 +40,7 @@ public class BubbleManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") && other.gameObject != owner)
+        if (other.gameObject.CompareTag("Player") && other.gameObject != owner && !other.gameObject.GetComponent<BubbleGauge>().isBubbled)
         {
             other.gameObject.GetComponent<BubbleGauge>().Hit(damage);
             Destroy(this.gameObject);

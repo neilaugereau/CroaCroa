@@ -5,18 +5,27 @@ public class BubbleEscape : MonoBehaviour
 {
     public int pressesNeeded = 20;
     [SerializeField]private int currentPresses = 0;
-    private BubbleGauge bubbleGauge;
 
+    [SerializeField] private GameObject _bubbleBubbled;
+    private GameObject _tempBubbleBubbled;
+    
+    private BubbleGauge bubbleGauge;
+    private Animator animator;
+    
     private void Start()
     {
         bubbleGauge = GetComponent<BubbleGauge>();
+        animator = GetComponent<Animator>();
     }
 
     public void FixedUpdate()
     {
-        if (bubbleGauge.isBubbled)
+        if (bubbleGauge.isBubbled && _tempBubbleBubbled == null)
         {
             GetComponent<PlayerController>().canMove = false;
+            GetComponent<SpriteRenderer>().sortingOrder = 0;
+            animator.SetBool("isBubbled", true);
+            _tempBubbleBubbled = Instantiate(_bubbleBubbled, transform.position, Quaternion.identity, transform );
         }
     }
 
@@ -35,6 +44,10 @@ public class BubbleEscape : MonoBehaviour
     void EscapeBubble()
     {
         GetComponent<PlayerController>().canMove = true;
+        GetComponent<SpriteRenderer>().sortingOrder = 2;
+        animator.SetBool("isBubbled", false);
+        Destroy(_tempBubbleBubbled);
+        _tempBubbleBubbled = null;
         bubbleGauge.BubbleSmash();
     }
 }
