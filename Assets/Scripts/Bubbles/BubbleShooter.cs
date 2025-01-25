@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class BubbleShooter : MonoBehaviour
 {
@@ -11,13 +12,14 @@ public class BubbleShooter : MonoBehaviour
     private bool isShooting = false;
     void Update()
     {
-        // Détecter si le joueur appuie sur la touche pour tirer
-        if (Input.GetKeyDown(KeyCode.F) && !isShooting)
-        {
-            StartCoroutine(ShootBurst());
-        }
+
     }
 
+    public void ShootingBurst(InputAction.CallbackContext context)
+    {
+        if(!isShooting)
+            StartCoroutine(ShootBurst());
+    }
     private IEnumerator ShootBurst()
     {
         isShooting = true;
