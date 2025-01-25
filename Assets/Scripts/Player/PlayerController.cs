@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     private PlayerInput _playerInput;
     [SerializeField]
     private bool _isPlayerOne;
+
+    public bool IsPlayerOne => _isPlayerOne;
+
     [SerializeField]
     private PlayerControllerSettings _settingsSO;
     private Rigidbody2D rb;
