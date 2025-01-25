@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
         move = new Vector2(inputMove.x, move.y);
         if(move.x != 0f && _dashState != DashState.Dashing)
             transform.localScale = new Vector2(move.x < 0f ? -Mathf.Abs(transform.localScale.x) : Mathf.Abs(transform.localScale.x), transform.localScale.y);
+        animator.SetBool("isWalking", inputMove != Vector2.zero);
     }
 
     private void JumpBehaviour()
