@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 8968392677737779415}
   - component: {fileID: 2949708776699343992}
   - component: {fileID: 1763157481082200668}
+  - component: {fileID: 291261588757486104}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -122,7 +123,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &9168526739545526744
 CapsuleCollider2D:
@@ -467,6 +468,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverCanvas: {fileID: 0}
   _winnerText: {fileID: 0}
+--- !u!114 &291261588757486104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682380314593091866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c271bd7d30c944894e38f5213c1c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7358622142037890131
 GameObject:
   m_ObjectHideFlags: 0

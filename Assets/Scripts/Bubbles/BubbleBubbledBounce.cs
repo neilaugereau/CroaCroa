@@ -9,10 +9,10 @@ public class BubbleBubbledBounce : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Rigidbody2D playerRb = collision.GetComponent<Rigidbody2D>();
-            if (playerRb != null)
+            if (playerRb != null && collision.attachedRigidbody.linearVelocityY < 0f)
             {
                 playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
-                collision.GetComponent<PlayerDefeat>().Defeat();
+                GetComponentInParent<PlayerDefeat>().Defeat();
             }
         }
     }

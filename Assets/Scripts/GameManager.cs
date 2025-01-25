@@ -1,6 +1,9 @@
+using System;
 using System.Numerics;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +22,8 @@ public class GameManager : MonoBehaviour
     private Transform player1Spawn;
     [SerializeField]
     private Transform player2Spawn;
+    [SerializeField]
+    private TMP_Text timerText;
 
     private BubbleType _playerOneWeapon;
     private BubbleType _playerTwoWeapon;
@@ -37,7 +42,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public float fightCountdown;
 
-    void Awake() {
+    private void Awake() {
         if(instance == null)
             instance = this;
 
@@ -47,10 +52,17 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Multiple GameManager instances");
     }
 
-    void Update() {
+    private void Start()
+    {
+        fightCountdown = fightDuration;
+        StartFight();
+    }
+
+    private void Update() {
         if(!isFightActive) return;
 
         fightCountdown -= Time.deltaTime;
+        timerText.text = Mathf.RoundToInt(fightCountdown).ToString();
 
         if(hasPlayer1Scored)
             EndRound(true);

@@ -15,8 +15,8 @@ MonoBehaviour:
   Speed: 8
   AirSpeedCoef: 0.7
   MovingGravityScale: 1
-  JumpForce: 12
-  AirGravityForce: 25
+  JumpForce: 6
+  AirGravityForce: 50
   DashDuration: 0.15
   DashForce: 20
   DashAirGravityScale: 0

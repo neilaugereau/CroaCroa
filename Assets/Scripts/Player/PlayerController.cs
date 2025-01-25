@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private PlayerControllerSettings _settingsSO;
     private Rigidbody2D rb;
     private Collider2D collider2d;
+    private Animator animator;
     public LayerMask groundLayer;
     [SerializeField]
 
@@ -64,6 +65,7 @@ public class PlayerController : MonoBehaviour
         _playerInput.SwitchCurrentActionMap(_isPlayerOne ? "Player1" : "Player2");
         rb = GetComponent<Rigidbody2D>();
         collider2d = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -71,6 +73,8 @@ public class PlayerController : MonoBehaviour
         if(canMove) {
             if (_dashState == DashState.CantDash && _isGrounded)
                 _dashState = DashState.CanDash;
+            
+            animator.SetBool("isGrounded", !_isGrounded);
 
             rb.gravityScale = _dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : _settingsSO.MovingGravityScale;
             transform.Translate(move * _settingsSO.Speed * (_jumpState == JumpState.Jumping ? _settingsSO.AirSpeedCoef : 1f) * Time.deltaTime);
@@ -99,9 +103,11 @@ public class PlayerController : MonoBehaviour
         switch (_jumpState)
         {
             case JumpState.Jumping:
-                if (_isGrounded && rb.linearVelocityY < 0f)
+                if (_isGrounded && rb.linearVelocityY <= 0f)
+                {
                     _jumpState = JumpState.CanJump;
                     rb.linearVelocityY -= _settingsSO.AirGravityForce * Time.deltaTime * (_dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : 1f);
+                }
                 break;
 
             default:
@@ -118,6 +124,7 @@ public class PlayerController : MonoBehaviour
             _jumpState = JumpState.Jumping;
             StopCoroutine(Dashed());
             _dashState = DashState.CanDash;
+            rb.linearVelocityY = 0;
             rb.linearVelocityY += _settingsSO.JumpForce;
             Debug.Log($"{name} jumped");
         }
