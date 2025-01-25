@@ -33,7 +33,7 @@ public class BubbleShooter : MonoBehaviour
             // Ajouter une force pour lancer la bulle
             Rigidbody2D rb = bubble.GetComponent<Rigidbody2D>();
             Vector2 randomDir = new Vector2(0 ,Random.Range(bubbleType.dispersionThreshold.x, bubbleType.dispersionThreshold.y) );
-            if(playerController.facingRight)
+            if(playerController.transform.localScale.x > 0f)
                 rb.AddForce((Vector2.right +randomDir) * bubbleType.shootForce, ForceMode2D.Impulse);
             else
                 rb.AddForce((Vector2.left +randomDir) * bubbleType.shootForce, ForceMode2D.Impulse);
