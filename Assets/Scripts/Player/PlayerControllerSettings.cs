@@ -11,5 +11,5 @@ public class PlayerControllerSettings : ScriptableObject
     public float DashDuration;
     public float DashForce;
     public float DashAirGravityScale;
-    public float DashCooldown;
+    public float FloorDashCooldown;
 }

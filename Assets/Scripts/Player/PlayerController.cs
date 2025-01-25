@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 move;
 
     private enum JumpState {CantJump, CanJump, Jumped, Jumping}
-    private enum DashState {CantDash, CanDash, Dashing}
+    private enum DashState {CantDash, CanDash, Dashing, ReloadDash}
 
     [SerializeField]
     private JumpState _jumpState = JumpState.CanJump;
@@ -29,13 +29,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private DashState _dashState = DashState.CanDash;
 
-    private IEnumerator Dashed()
+    private IEnumerator Dashed(bool floorDash)
     {
         yield return new WaitForSeconds(_settingsSO.DashDuration);
         rb.linearVelocityX = 0f;
         _dashState = DashState.CantDash;
-        yield return new WaitForSeconds(_settingsSO.DashCooldown - _settingsSO.DashDuration);
-        _dashState = DashState.CanDash;
+        if(floorDash)
+        {
+            _dashState = DashState.ReloadDash;
+            yield return new WaitForSeconds(_settingsSO.FloorDashCooldown - _settingsSO.DashDuration);
+            _dashState = DashState.CanDash;
+        }
     }
 
     private void Awake()
@@ -48,6 +52,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (_dashState == DashState.CantDash && _isGrounded)
+            _dashState = DashState.CanDash;
+
         rb.gravityScale = _dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : _settingsSO.MovingGravityScale;
         transform.Translate(move * _settingsSO.Speed * (_jumpState == JumpState.Jumping ? _settingsSO.AirSpeedCoef : 1f) * Time.deltaTime);
         JumpBehaviour();
@@ -98,7 +105,7 @@ public class PlayerController : MonoBehaviour
         if (_dashState == DashState.CanDash)
         {
             _dashState = DashState.Dashing;
-            StartCoroutine("Dashed");
+            StartCoroutine(Dashed(_isGrounded));
             rb.linearVelocityX += _settingsSO.DashForce * Mathf.Sign(transform.localScale.x);
             rb.linearVelocityY *= _settingsSO.DashAirGravityScale;
 
