@@ -1,13 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class BubbleGauge : MonoBehaviour
 {
     private float _gauge;
-    private float _gaugeThreshold;
+    private float _gaugeThreshold = 0f;
     public bool isBubbled;
     
-    [SerializeField] Sprite _bubbledSprite;
     public float Gauge
     {
         get => _gauge;
@@ -20,7 +20,7 @@ public class BubbleGauge : MonoBehaviour
             else if(value > 100f)
             {
                 _gauge = 100f;
-                BubbleSmash();
+                isBubbled = true;
             }
             else
             {
@@ -36,8 +36,12 @@ public class BubbleGauge : MonoBehaviour
 
     public void BubbleSmash()
     {
-        if (isBubbled)
-            return;
+        isBubbled = false;
+        _gauge = _gaugeThreshold;
         
+        if (_gaugeThreshold < 0.75f)
+            _gaugeThreshold += 0.25f;
+        else
+            _gaugeThreshold = 0.75f;
     }
 }

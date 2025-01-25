@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8968392677737779415}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,6 +179,7 @@ MonoBehaviour:
   move: {x: 0, y: 0}
   _jumpState: 1
   _dashState: 1
+  canMove: 1
 --- !u!114 &15937536140373005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,10 +310,6 @@ MonoBehaviour:
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: b16c6ea9-cf15-4970-81d7-c8bfc2360f8f
-    m_ActionName: 'Player1/Mash[/Keyboard/e,/Keyboard/g]'
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5674262140608044698}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
@@ -376,6 +373,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 10bdd524-604d-46fa-9f6d-c8edb72a7493
     m_ActionName: 'Player2/Jump[/Keyboard/upArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 259d38df-4886-40a3-adc6-d7fa733a53ce
+    m_ActionName: 'Player1/Mash[/Keyboard/g,/Keyboard/e,/Keyboard/z]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 276d96d7-a56e-4995-8a20-0a63047b1c64
+    m_ActionName: 'Player2/Mash[/Keyboard/l,/Keyboard/semicolon,/Keyboard/upArrow]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player1
@@ -430,9 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4103d54ce71a06479e2a98a4d6034bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnGaugeChange:
-    m_PersistentCalls:
-      m_Calls: []
+  isBubbled: 0
 --- !u!1 &7358622142037890131
 GameObject:
   m_ObjectHideFlags: 0

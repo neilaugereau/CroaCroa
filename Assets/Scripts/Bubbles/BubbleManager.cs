@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BubbleManager : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class BubbleManager : MonoBehaviour
     [SerializeField] private BubbleType bubbleType;
 
     private Rigidbody2D rb;
+    
+    public GameObject owner;
     
     private float _timer;
     void Start()
@@ -30,6 +34,15 @@ public class BubbleManager : MonoBehaviour
 
         if (_timer >= lifeTime)
         {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player") && other.gameObject != owner)
+        {
+            other.gameObject.GetComponent<BubbleGauge>().Hit(damage);
             Destroy(this.gameObject);
         }
     }

@@ -10,11 +10,7 @@ public class BubbleShooter : MonoBehaviour
     public BubbleType bubbleType;
     
     private bool isShooting = false;
-    void Update()
-    {
-
-    }
-
+    
     public void ShootingBurst(InputAction.CallbackContext context)
     {
         if(!isShooting)
@@ -28,6 +24,7 @@ public class BubbleShooter : MonoBehaviour
         {
             // Créer une bulle au point de tir
             GameObject bubble = Instantiate(bubbleType.prefab, shootPoint.position, Quaternion.identity);
+            bubble.GetComponent<BubbleManager>().owner = gameObject;
             
             float randomSize = Random.Range(bubbleType.sizeThreshold.x, bubbleType.sizeThreshold.y);
             bubble.transform.localScale = bubble.transform.localScale * randomSize;
