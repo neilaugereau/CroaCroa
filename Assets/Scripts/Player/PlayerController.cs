@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 move;
 
-    private enum JumpState {CantJump, CanJump, Jumped, Jumping}
+    private enum JumpState {CantJump, CanJump, Jumping}
     private enum DashState {CantDash, CanDash, Dashing, ReloadDash}
 
     [SerializeField]
@@ -34,17 +34,28 @@ public class PlayerController : MonoBehaviour
 
     public bool canMove = true;
 
-    private IEnumerator Dashed(bool floorDash)
+    private float _dashTimer;
+
+    private IEnumerator Dashed(bool cooldown = false)
     {
+        Debug.Log("Start dash");
         yield return new WaitForSeconds(_settingsSO.DashDuration);
+        Debug.Log("Dash end");
         rb.linearVelocityX = 0f;
-        _dashState = DashState.CantDash;
-        if(floorDash)
-        {
-            _dashState = DashState.ReloadDash;
-            yield return new WaitForSeconds(_settingsSO.FloorDashCooldown - _settingsSO.DashDuration);
-            _dashState = DashState.CanDash;
-        }
+        if(_dashState == DashState.Dashing)
+            _dashState = DashState.CantDash;
+        if(cooldown && _jumpState != JumpState.Jumping)
+            StartCoroutine(FloorDashCooldown());
+    }
+
+    private IEnumerator FloorDashCooldown()
+    {
+        _dashState = DashState.ReloadDash;
+        Debug.Log("Start cooldown");
+        yield return new WaitForSeconds(_settingsSO.FloorDashCooldown);
+        Debug.Log("EndCooldown");
+        if(_jumpState != JumpState.Jumping)
+            _dashState = DashState.CantDash;
     }
 
     private void Awake()
@@ -87,13 +98,8 @@ public class PlayerController : MonoBehaviour
         _isGrounded = IsGrounded();
         switch (_jumpState)
         {
-            case JumpState.Jumped:
-                if(!_isGrounded) 
-                    _jumpState = JumpState.Jumping;
-                break;
-
             case JumpState.Jumping:
-                if (_isGrounded)
+                if (_isGrounded && rb.linearVelocityY < 0f)
                     _jumpState = JumpState.CanJump;
                     rb.linearVelocityY -= _settingsSO.AirGravityForce * Time.deltaTime * (_dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : 1f);
                 break;
@@ -109,9 +115,11 @@ public class PlayerController : MonoBehaviour
         if(!canMove) return;
         if (_isGrounded && _jumpState == JumpState.CanJump)
         {
-            _jumpState = JumpState.Jumped;
+            _jumpState = JumpState.Jumping;
+            StopCoroutine(Dashed());
+            _dashState = DashState.CanDash;
             rb.linearVelocityY += _settingsSO.JumpForce;
-            //Debug.Log($"{name} jumped");
+            Debug.Log($"{name} jumped");
         }
     }
 
@@ -121,7 +129,7 @@ public class PlayerController : MonoBehaviour
         if (_dashState == DashState.CanDash)
         {
             _dashState = DashState.Dashing;
-            StartCoroutine(Dashed(_isGrounded));
+            StartCoroutine(Dashed(IsGrounded()));
             rb.linearVelocityX += _settingsSO.DashForce * Mathf.Sign(transform.localScale.x);
             rb.linearVelocityY *= _settingsSO.DashAirGravityScale;
 
