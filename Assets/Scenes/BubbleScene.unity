@@ -1110,6 +1110,10 @@ PrefabInstance:
       propertyPath: _bubbledSprite
       value: 
       objectReference: {fileID: 21300000, guid: 76fdff6cd27a0de4f83247ad32e63052, type: 3}
+    - target: {fileID: 9188269345575737927, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
