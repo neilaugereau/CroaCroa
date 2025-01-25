@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7503957993664850117}
   - component: {fileID: 8968392677737779415}
   - component: {fileID: 2949708776699343992}
+  - component: {fileID: 1763157481082200668}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -452,6 +453,20 @@ MonoBehaviour:
   pressesNeeded: 20
   currentPresses: 0
   _bubbleBubbled: {fileID: 3592324653714009050, guid: 06a355c24fe93a2448ba4b79b9400f13, type: 3}
+--- !u!114 &1763157481082200668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682380314593091866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5889dddf7ee3a2947b59149cbae9174a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameOverCanvas: {fileID: 0}
+  _winnerText: {fileID: 0}
 --- !u!1 &7358622142037890131
 GameObject:
   m_ObjectHideFlags: 0
