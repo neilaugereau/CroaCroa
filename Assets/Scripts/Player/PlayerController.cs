@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
         Vector2 inputMove = context.action.ReadValue<Vector2>().normalized;
         move = new Vector2(inputMove.x, move.y);
         if(move.x != 0f && _dashState != DashState.Dashing)
-            transform.localScale = new Vector2(move.x < 0f ? -1 : 1, transform.localScale.y);
+            transform.localScale = new Vector2(move.x < 0f ? -Mathf.Abs(transform.localScale.x) : Mathf.Abs(transform.localScale.x), transform.localScale.y);
     }
 
     private void JumpBehaviour()
