@@ -12,7 +12,7 @@ public class BubbleBubbledBounce : MonoBehaviour
             if (playerRb != null)
             {
                 playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
-                collision.GetComponent<PlayerDefeat>().Defeat();
+                GetComponentInParent<PlayerDefeat>().Defeat();
             }
         }
     }
