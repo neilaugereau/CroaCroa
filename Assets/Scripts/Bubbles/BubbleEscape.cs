@@ -34,6 +34,9 @@ public class BubbleEscape : MonoBehaviour
         if (bubbleGauge.isBubbled && Input.GetKeyDown(KeyCode.Space))
         {
             currentPresses++;
+            StartCoroutine(GetComponent<ShakeEffect>().Shake(0.1f, 0.1f));
+            if(_tempBubbleBubbled != null && currentPresses <= pressesNeeded -1)
+                StartCoroutine(_tempBubbleBubbled.GetComponent<ShakeEffect>().Shake(0.1f, 0.1f));
             if (currentPresses >= pressesNeeded)
             {
                 EscapeBubble();

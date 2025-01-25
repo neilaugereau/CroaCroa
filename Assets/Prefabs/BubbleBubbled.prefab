@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 991186919505519824}
   - component: {fileID: 1629557464206032467}
   - component: {fileID: 5864041212595161173}
+  - component: {fileID: 3865122504724461547}
   - component: {fileID: 8824148339019677714}
   m_Layer: 0
   m_Name: BubbleBubbled
@@ -126,6 +127,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.024969855, y: 0.2097484}
   m_Size: {x: 0.50060177, y: 0.17599373}
   m_Direction: 1
+--- !u!114 &3865122504724461547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3592324653714009050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c271bd7d30c944894e38f5213c1c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8824148339019677714
 MonoBehaviour:
   m_ObjectHideFlags: 0
