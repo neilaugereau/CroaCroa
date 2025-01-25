@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
-using UnityEngine.Windows;
+using UnityEngine.SceneManagement;
 
 
 public class CharacterSelection : MonoBehaviour
@@ -42,7 +42,6 @@ public class CharacterSelection : MonoBehaviour
                 _playerOneSkinID = _playerSkins.Count - 1;
             else
                 _playerOneSkinID = value;
-            Debug.Log($"SkinOne : {_playerOneSkinID}");
         }
     }
     private int PlayerTwoSkinID
@@ -56,7 +55,6 @@ public class CharacterSelection : MonoBehaviour
                 _playerTwoSkinID = _playerSkins.Count - 1;
             else
                 _playerTwoSkinID = value;
-            Debug.Log($"SkinTwo : {_playerTwoSkinID}");
         }
     }
     private int WeaponOneID
@@ -70,7 +68,6 @@ public class CharacterSelection : MonoBehaviour
                 _weaponOneID = _bubblesWeapons.Count - 1;
             else
                 _weaponOneID = value;
-            Debug.Log($"WeaponOne : {_weaponOneID}");
         }
     }
     private int WeaponTwoID
@@ -84,27 +81,19 @@ public class CharacterSelection : MonoBehaviour
                 _weaponTwoID = _bubblesWeapons.Count - 1;
             else
                 _weaponTwoID = value;
-            Debug.Log($"WeaponTwo : {_weaponTwoID}");
         }
     }
-    [SerializeField]
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        UpdateUI();
     }
 
     public void PlayerOneChoice(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
         Vector2 input = context.ReadValue<Vector2>().normalized;
-        Debug.Log(input);
         int x = Mathf.RoundToInt(input.x);
         int y = Mathf.RoundToInt(input.y);
         PlayerOneSkinID += x;
@@ -135,6 +124,8 @@ public class CharacterSelection : MonoBehaviour
 
     public void Play()
     {
-
+        //GameManager.instance.LoadData(PlayerOneSkinID, _bubblesWeapons[WeaponOneID], PlayerTwoSkinID, _bubblesWeapons[WeaponTwoID]);
+        SceneManager.LoadScene("MainGameScene");
+        Debug.Log("PLAY");
     }
 }
