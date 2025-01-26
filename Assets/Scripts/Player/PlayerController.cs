@@ -43,9 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Dashed(bool cooldown = false)
     {
-        Debug.Log("Start dash");
         yield return new WaitForSeconds(_settingsSO.DashDuration);
-        Debug.Log("Dash end");
         rb.linearVelocityX = 0f;
         if(_dashState == DashState.Dashing)
             _dashState = DashState.CantDash;
@@ -56,9 +54,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator FloorDashCooldown()
     {
         _dashState = DashState.ReloadDash;
-        Debug.Log("Start cooldown");
         yield return new WaitForSeconds(_settingsSO.FloorDashCooldown);
-        Debug.Log("EndCooldown");
         if(_jumpState != JumpState.Jumping)
             _dashState = DashState.CantDash;
     }
@@ -139,7 +135,6 @@ public class PlayerController : MonoBehaviour
             _dashState = DashState.CanDash;
             rb.linearVelocityY = 0;
             rb.linearVelocityY += _settingsSO.JumpForce;
-            Debug.Log($"{name} jumped");
         }
     }
     public void Drop(InputAction.CallbackContext context)
@@ -148,7 +143,7 @@ public class PlayerController : MonoBehaviour
         if (Physics2D.IsTouchingLayers(collider2d, platformLayer) && _jumpState == JumpState.CanJump)
         {
             collider2d.isTrigger = true;
-            Invoke("Undrop", 0.1f);
+            Invoke("Undrop", 0.5f);
         }
     }
 
@@ -165,8 +160,6 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Dashed(IsGrounded()));
             rb.linearVelocityX += _settingsSO.DashForce * Mathf.Sign(transform.localScale.x);
             rb.linearVelocityY *= _settingsSO.DashAirGravityScale;
-
-            //Debug.Log($"{name} dashed");
         }
     }
 
