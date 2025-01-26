@@ -166,6 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 5
-  damage: 50
+  damage: 35
   bubbleType: {fileID: 11400000, guid: 02130187ad3e6c5408ee18bac3e2a1ec, type: 2}
   owner: {fileID: 0}

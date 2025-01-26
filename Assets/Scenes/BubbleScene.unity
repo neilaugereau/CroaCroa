@@ -287,6 +287,10 @@ PrefabInstance:
       propertyPath: _gameOverCanvas
       value: 
       objectReference: {fileID: 1279169990}
+    - target: {fileID: 2902501062225574686, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
+      propertyPath: bubbleType
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d1ca054bf3047546b7b8d6b7b71f995, type: 2}
     - target: {fileID: 5674262140608044698, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
       propertyPath: _isPlayerOne
       value: 1
@@ -1105,7 +1109,7 @@ PrefabInstance:
     - target: {fileID: 2902501062225574686, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
       propertyPath: bubbleType
       value: 
-      objectReference: {fileID: 11400000, guid: 02130187ad3e6c5408ee18bac3e2a1ec, type: 2}
+      objectReference: {fileID: 11400000, guid: 0d1ca054bf3047546b7b8d6b7b71f995, type: 2}
     - target: {fileID: 5674262140608044698, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
       propertyPath: _isPlayerOne
       value: 0

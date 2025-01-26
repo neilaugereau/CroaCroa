@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1af86d9d30673424d88618b545f6f5a8, type: 3}
-  m_Name: BigBubble
+  m_Name: Babble
   m_EditorClassIdentifier: 
-  description: 'BigBubble\nA big bubble for a big damage !\nDamages : 100 - Fire
-    Rate : 1'
-  prefab: {fileID: 6366514507540186723, guid: 5af5c1cd658381d43a902130247be98b, type: 3}
-  sizeThreshold: {x: 1, y: 1}
-  gravityThreshold: {x: -0.5, y: 0.5}
-  dispersionThreshold: {x: 0, y: 0}
+  description: 'Babble\nUne bulle chill, elle prend son temps mais fait son boulot.\nFire
+    rate : Normal\nShoot Force : 10\nBurst Count : 5\nDispersion : Medium '
+  prefab: {fileID: 6366514507540186723, guid: 1cb6663e2adf53a4c97409b6115ad155, type: 3}
+  sizeThreshold: {x: 0.9, y: 1.1}
+  gravityThreshold: {x: -0.3, y: 0.3}
+  dispersionThreshold: {x: -0.1, y: 0.1}
   shootForce: 10
-  fireRate: 0.1
+  fireRate: 0.2
   burstCount: 5
