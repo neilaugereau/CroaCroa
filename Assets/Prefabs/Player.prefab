@@ -523,7 +523,7 @@ MonoBehaviour:
   currentPresses: 0
   _bubbleBubbled: {fileID: 3592324653714009050, guid: 06a355c24fe93a2448ba4b79b9400f13, type: 3}
   _bubbledSound: {fileID: 8300000, guid: c19928ed0ef3cad4a97477c3acb42caa, type: 3}
-  _mashForce: 10
+  _mashForce: 13
   _mashMalusCoef: 20
 --- !u!114 &1763157481082200668
 MonoBehaviour:
