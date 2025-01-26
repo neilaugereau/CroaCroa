@@ -445,7 +445,7 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 845bd089-ae7e-437c-a461-197e52a88c3d
     m_ActionName: 'Player2/Drop[/Keyboard/downArrow]'
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player1
   m_SplitScreenIndex: -1
