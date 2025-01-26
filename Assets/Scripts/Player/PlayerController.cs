@@ -110,8 +110,8 @@ public class PlayerController : MonoBehaviour
                 if (_isGrounded && rb.linearVelocityY <= 0f)
                 {
                     _jumpState = JumpState.CanJump;
-                    rb.linearVelocityY -= _settingsSO.AirGravityForce * Time.deltaTime * (_dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : 1f);
                 }
+                rb.linearVelocityY -= _settingsSO.AirGravityForce * Time.deltaTime * (_dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : 1f);
                 break;
 
             default:
