@@ -13,7 +13,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] private Canvas _gameOverCanvas;
+    [SerializeField] private TMP_Text _gameOverText;
     [SerializeField] private TMP_Text _winnerText;
+    [SerializeField] private TMP_Text _scoreText;
+    [SerializeField] private TMP_Text _roundWinText;
 
     [SerializeField] private float fightDuration = 300f;
     [SerializeField] private int roundToWinCount = 3;
@@ -24,7 +27,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<BubbleType> bubbles;
     [SerializeField] private TMP_Text timerText;
-    [SerializeField] private TMP_Text _scoreText;
 
     private void Awake() {
         if(instance == null) {
@@ -60,7 +62,7 @@ public class GameManager : MonoBehaviour
         timerText.text = Mathf.Floor(Data.instance.fightCountdown / 60f).ToString() + " : " + Mathf.Floor(Data.instance.fightCountdown % 60f).ToString();
 
         if(Data.instance.fightCountdown <= 0f)
-            EndFight(Data.instance.player1TrappedCount >= Data.instance.player2TrappedCount);
+            EndFight();
     }
 
     public void LoadData()
@@ -79,6 +81,8 @@ public class GameManager : MonoBehaviour
 
         player1.GetComponent<BubbleShooter>().bubbleType = bubbles[weaponOneID];
         player2.GetComponent<BubbleShooter>().bubbleType = bubbles[weaponTwoID];
+
+        _roundWinText.text = $"{roundToWinCount} rounds to win !";
     }
 
     public void StartFight() {
@@ -99,10 +103,38 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    void EndFight(bool hasPlayer1Won) {
-        Data.instance.isFightActive = false;
+    void EndFight() 
+    {
+        _gameOverText.text = "END !";
+        if(Data.instance.player1Score > Data.instance.player2Score)
+        {
+            _winnerText.text = "Player 1 wins !";
+        }
+        else if(Data.instance.player2Score > Data.instance.player1Score)
+        {
+            _winnerText.text = "Player 2 wins !";
 
-        // switch to EndScreenScene -> back to Character choice
+        }
+        else if(Data.instance.player1TrappedCount > Data.instance.player2TrappedCount)
+        {
+            _winnerText.text = "Player 2 wins !";
+
+        }
+        else if(Data.instance.player2TrappedCount > Data.instance.player1TrappedCount)
+        {
+            _winnerText.text = "Player 1 wins !";
+        }
+        else
+        {
+            _winnerText.text = "Tie !";
+        }
+        _gameOverCanvas.gameObject.SetActive(true);
+        Invoke("EndMatch", 3f);
+    }
+
+    private void EndMatch()
+    {
+        SceneManager.LoadScene("PlayerSelection");
     }
 
     void EndRound(bool hasPlayer1Won) {
@@ -116,11 +148,10 @@ public class GameManager : MonoBehaviour
         _scoreText.text = _winnerText.text;
         gameObject.SetActive(false);
 
-        if(Data.instance.player1Score == roundToWinCount)
-            EndFight(true);
-        else if(Data.instance.player2Score == roundToWinCount)
-            EndFight(false);
-        else {
+        if (Data.instance.player1Score == roundToWinCount || Data.instance.player2Score == roundToWinCount)
+            EndFight();
+        else
+        {
             Data.instance.isFightActive = false;
             Invoke("StartRound", 3f);
         }
