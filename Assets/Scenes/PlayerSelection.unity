@@ -993,7 +993,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5544282123755255143, guid: b7c54e9ceeb1a6446829274d01f15815, type: 3}
+  m_Sprite: {fileID: 1116602786, guid: c65ee49bdbf278e4ea8f14b9940c31c3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1412,11 +1412,11 @@ MonoBehaviour:
   _bubblesWeapons:
   - {fileID: 11400000, guid: 8af6c8d5cd8833d4aa94268367c5b00f, type: 2}
   - {fileID: 11400000, guid: 02130187ad3e6c5408ee18bac3e2a1ec, type: 2}
-  - {fileID: 11400000, guid: aebbcabcc8251f34cad62bee7a678ba8, type: 2}
   _playerSkins:
-  - {fileID: -5544282123755255143, guid: b7c54e9ceeb1a6446829274d01f15815, type: 3}
-  - {fileID: 8753353632672535565, guid: 03ecdde7f7788f045ad6f08c6bec8161, type: 3}
-  - {fileID: 21300000, guid: db32ccbcb52dea94ebe9f43f5efd1f12, type: 3}
+  - {fileID: 172437052, guid: b7c54e9ceeb1a6446829274d01f15815, type: 3}
+  - {fileID: 1116602786, guid: c65ee49bdbf278e4ea8f14b9940c31c3, type: 3}
+  - {fileID: -5544282123755255143, guid: aaec34608df5cb44c82ac3d1650e914b, type: 3}
+  - {fileID: -5544282123755255143, guid: b6fb4f66a4b156946b5c8e561932c2d4, type: 3}
   _playerOneSkin: {fileID: 415778199}
   _playerTwoSkin: {fileID: 938859724}
   _weaponOneSprite: {fileID: 1515613713}
@@ -2461,7 +2461,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5544282123755255143, guid: b7c54e9ceeb1a6446829274d01f15815, type: 3}
+  m_Sprite: {fileID: -5544282123755255143, guid: aaec34608df5cb44c82ac3d1650e914b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3329,7 +3329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1562829347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3348,7 +3348,8 @@ MonoBehaviour:
   player2: {fileID: 0}
   player1Spawn: {fileID: 0}
   player2Spawn: {fileID: 0}
-  fightCountdown: 0
+  timerText: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!4 &1562829348
 Transform:
   m_ObjectHideFlags: 0
