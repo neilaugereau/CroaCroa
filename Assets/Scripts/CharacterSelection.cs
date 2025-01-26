@@ -140,4 +140,9 @@ public class CharacterSelection : MonoBehaviour
         SceneManager.LoadScene("MainGameScene");
         Debug.Log("PLAY");
     }
+
+    public void Back()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
