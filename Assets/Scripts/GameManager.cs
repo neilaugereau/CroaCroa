@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 using TMPro;
 using Unity.VisualScripting;
@@ -18,20 +19,29 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int roundToWinCount = 3;
     [SerializeField] private GameObject player1;
     [SerializeField] private GameObject player2;
+    [SerializeField]
+    private List<RuntimeAnimatorController> animators;
+    [SerializeField]
+    private List<BubbleType> bubbles;
     [SerializeField] private TMP_Text timerText;
 
     private void Awake() {
         if(instance == null) {
             instance = this;
             
-            player1.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { Data.instance.player1TrappedCount++; });
-            player2.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { Data.instance.player2TrappedCount++; });
-            player1.GetComponent<PlayerDefeat>().onDefeat.AddListener(() => { EndRound(false); });
-            player2.GetComponent<PlayerDefeat>().onDefeat.AddListener(() => { EndRound(true); });
+            
         }
         else
             Debug.LogWarning("Multiple GameManager instances");
             
+    }
+
+    private void Sub()
+    {
+        player1.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { Data.instance.player1TrappedCount++; });
+        player2.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { Data.instance.player2TrappedCount++; });
+        player1.GetComponent<PlayerDefeat>().onDefeat.AddListener(() => { EndRound(false); });
+        player2.GetComponent<PlayerDefeat>().onDefeat.AddListener(() => { EndRound(true); });
     }
 
     private void Start() {
@@ -49,14 +59,16 @@ public class GameManager : MonoBehaviour
             EndFight(Data.instance.player1TrappedCount >= Data.instance.player2TrappedCount);
     }
 
-    public void LoadData(int skinOneID, BubbleType weaponOne, int skinTwoID, BubbleType weaponTwo)
+    public void LoadData(int skinOneID, int weaponOneID, int skinTwoID, int weaponTwoID)
     {
         Data.instance.playerOneSkinID = skinOneID;
         Data.instance.playerTwoSkinID = skinTwoID;
-        // @todo Load right animations depending of the skin
 
-        player1.GetComponent<BubbleShooter>().bubbleType = weaponOne;
-        player2.GetComponent<BubbleShooter>().bubbleType = weaponTwo;
+        player1.GetComponent<Animator>().runtimeAnimatorController = animators[skinOneID];
+        player2.GetComponent<Animator>().runtimeAnimatorController = animators[skinTwoID];
+
+        player1.GetComponent<BubbleShooter>().bubbleType = bubbles[weaponOneID];
+        player2.GetComponent<BubbleShooter>().bubbleType = bubbles[weaponTwoID];
     }
 
     public void StartFight() {
@@ -68,6 +80,9 @@ public class GameManager : MonoBehaviour
         Data.instance.fightCountdown = fightDuration;
         
         Data.instance.isFightActive = true;
+
+        string[] choicesData = PlayerPrefs.GetString("Choices","0-0-1-1").Split('-');
+        LoadData(int.Parse(choicesData[0]), int.Parse(choicesData[1]), int.Parse(choicesData[2]), int.Parse(choicesData[3]));
     }
 
     void StartRound() {

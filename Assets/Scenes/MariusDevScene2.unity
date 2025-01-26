@@ -269,8 +269,6 @@ MonoBehaviour:
   player2Spawn: {fileID: 1112349886}
   timerText: {fileID: 1233196182}
   canvas: {fileID: 2042212474}
-  _playerOneSkinID: 0
-  _playerTwoSkinID: 0
 --- !u!4 &147777401
 Transform:
   m_ObjectHideFlags: 0
@@ -337,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59320b71b471c4e418e17eedfa74f5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugId: 3
+  DebugId: 1
   animators:
   - {fileID: 9100000, guid: 18b72ab3a00a99e4d854e6fb5d229d2f, type: 2}
   - {fileID: 22100000, guid: bb14651a3b625b548bb40f2103b770ec, type: 2}
