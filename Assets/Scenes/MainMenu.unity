@@ -1115,8 +1115,8 @@ MonoBehaviour:
   wobblingYStrenght: 2.5
   rainbow:
     serializedVersion: 2
-    key0: {r: 0.046146322, g: 0.5754717, b: 0.13281953, a: 1}
-    key1: {r: 0.7071698, g: 1, b: 0.5424528, a: 1}
+    key0: {r: 0.008677464, g: 0.3679245, b: 0.06722141, a: 1}
+    key1: {r: 0.44085622, g: 0.8490566, b: 0.21226415, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
