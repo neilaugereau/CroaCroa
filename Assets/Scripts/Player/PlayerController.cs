@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private Collider2D collider2d;
     private Animator animator;
     public LayerMask groundLayer;
+    public LayerMask platformLayer;
     [SerializeField]
 
 
@@ -136,6 +137,19 @@ public class PlayerController : MonoBehaviour
             Debug.Log($"{name} jumped");
         }
     }
+    public void Drop(InputAction.CallbackContext context)
+    {
+        if(!canMove) return;
+        if (Physics2D.IsTouchingLayers(collider2d, platformLayer) && _jumpState == JumpState.CanJump)
+        {
+            collider2d.isTrigger = true;
+            Invoke("Undrop", 0.1f);
+        }
+    }
+
+    private void Undrop() {
+        collider2d.isTrigger = false;
+    }
 
     public void Dash(InputAction.CallbackContext context)
     {
@@ -153,7 +167,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.IsTouchingLayers(collider2d, groundLayer);
+        return Physics2D.IsTouchingLayers(collider2d, groundLayer) || Physics2D.IsTouchingLayers(collider2d, platformLayer);
     }
     
 

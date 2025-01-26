@@ -95,7 +95,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &9188269345575737927
@@ -179,6 +179,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 512
   move: {x: 0, y: 0}
   _jumpState: 1
   _dashState: 1
@@ -384,6 +387,38 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 276d96d7-a56e-4995-8a20-0a63047b1c64
     m_ActionName: 'Player2/Mash[/Keyboard/l,/Keyboard/semicolon,/Keyboard/upArrow]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5674262140608044698}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Drop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c6bbc688-543d-42a2-93fc-9cb209238185
+    m_ActionName: 'Player1/Drop[/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5674262140608044698}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Drop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 845bd089-ae7e-437c-a461-197e52a88c3d
+    m_ActionName: 'Player2/Drop[/Keyboard/downArrow]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player1
@@ -439,6 +474,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBubbled: 0
+  onBubbled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2949708776699343992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,8 +504,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5889dddf7ee3a2947b59149cbae9174a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameOverCanvas: {fileID: 0}
-  _winnerText: {fileID: 0}
+  onDefeat:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &291261588757486104
 MonoBehaviour:
   m_ObjectHideFlags: 0
