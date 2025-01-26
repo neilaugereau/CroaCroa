@@ -44,7 +44,7 @@ public class BubbleEscape : MonoBehaviour
 
     public void TryEscape(InputAction.CallbackContext context) 
     {
-        if (bubbleGauge.isBubbled && context.performed)
+        if (bubbleGauge.isBubbled && context.performed && Data.instance.isFightActive)
         {
             float mashDamages = _mashForce * (1 - (((GetComponent<PlayerController>().IsPlayerOne ? Data.instance.player1TrappedCount : Data.instance.player2TrappedCount)-1) * _mashMalusCoef / 100));
             Debug.Log(mashDamages);
