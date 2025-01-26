@@ -23,4 +23,10 @@ public class Data : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
     }
+
+    public void RoundReset()
+    {
+        player1TrappedCount = 0;
+        player2TrappedCount = 0;
+    }
 }

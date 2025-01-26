@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour
 
     void StartRound() {
         Data.instance.isFightActive = true;
+        Data.instance.RoundReset();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
