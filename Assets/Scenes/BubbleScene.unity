@@ -871,14 +871,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6ae82127413774bb86f73d2cc1bad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameOverCanvas: {fileID: 1279169990}
+  _winnerText: {fileID: 627763163}
   fightDuration: 300
   roundToWinCount: 3
   player1: {fileID: 2054135911}
   player2: {fileID: 1478728630}
-  player1Spawn: {fileID: 382166353}
-  player2Spawn: {fileID: 663376584}
   timerText: {fileID: 1339339536}
-  canvas: {fileID: 0}
 --- !u!4 &1399298092
 Transform:
   m_ObjectHideFlags: 0
