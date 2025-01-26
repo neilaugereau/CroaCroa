@@ -10,11 +10,16 @@ public class BubbleShooter : MonoBehaviour
     public BubbleType bubbleType;
 
     private Animator animator;
+    private AudioSource _audioSource;
+    
+    [SerializeField]
+    private AudioClip _bubbleSound;
     
     private bool isShooting = false;
 
     private void Awake() {
         animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
     
     public void ShootingBurst(InputAction.CallbackContext context)
@@ -44,6 +49,8 @@ public class BubbleShooter : MonoBehaviour
                 rb.AddForce((Vector2.right +randomDir) * bubbleType.shootForce, ForceMode2D.Impulse);
             else
                 rb.AddForce((Vector2.left +randomDir) * bubbleType.shootForce, ForceMode2D.Impulse);
+            
+            _audioSource.PlayOneShot(_bubbleSound);
             
             // Attendre avant de tirer la prochaine bulle
             yield return new WaitForSeconds(bubbleType.fireRate);
