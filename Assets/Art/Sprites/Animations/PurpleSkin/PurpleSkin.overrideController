@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PurpleSkin
+  m_Controller: {fileID: 9100000, guid: 18b72ab3a00a99e4d854e6fb5d229d2f, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 735ff5fb1f84ef04fb921d2e4db24ac6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b5b988649de15174aa3aac18c546bd05, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 193e9df16492cbe479792bdd30337ae2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ea64a21619721834cb2beabc441690bf, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0f11f23894624914697a2f9ce326c820, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a062bba81d3c20242967a198accb04ed, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1687d8c7cc4193241927632fbcb2d0a4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3564eeb2ef5bdfb4cbd99b9b60dc2877, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2dae09bb176c9d24a8e3c66167b3bc5e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f07a4b6bcecf909409e2d8e00bf8b069, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a48384dcce3151c4a9a9bd1fd49c2ff1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f64064d8dee92234695f32161397cb8b, type: 2}

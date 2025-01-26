@@ -3,6 +3,7 @@ using System.Numerics;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 public class GameManager : MonoBehaviour
@@ -10,77 +11,50 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
-    [SerializeField]
-    private float fightDuration = 300f;
-    [SerializeField]
-    private int roundToWinCount = 3;
-    [SerializeField]
-    private GameObject player1;
-    [SerializeField]
-    private GameObject player2;
-    [SerializeField]
-    private Transform player1Spawn;
-    [SerializeField]
-    private Transform player2Spawn;
-    [SerializeField]
-    private TMP_Text timerText;
-    [SerializeField]
-    private Canvas canvas;
+    [SerializeField] private Canvas _gameOverCanvas;
+    [SerializeField] private TMP_Text _winnerText;
 
-    private BubbleType _playerOneWeapon;
-    private BubbleType _playerTwoWeapon;
-    private int _playerOneSkinID;
-    private int _playerTwoSkinID;
-    private int player1Score;
-    private int player2Score;
-    private int player1TrappedCount;
-    private int player2TrappedCount;
-
-    private bool isFightActive = false;
-
-    private float fightCountdown;
-
-    private float timeScale = 1f;
-
-    public float DeltaTime {
-        get => timeScale * Time.deltaTime;
-
-        private set => timeScale = value;
-    }
+    [SerializeField] private float fightDuration = 300f;
+    [SerializeField] private int roundToWinCount = 3;
+    [SerializeField] private GameObject player1;
+    [SerializeField] private GameObject player2;
+    [SerializeField] private TMP_Text timerText;
 
     private void Awake() {
-        if(instance == null)
+        if(instance == null) {
             instance = this;
+
+            Debug.Log("first time load");
+            
+            player1.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { Data.instance.player1TrappedCount++; });
+            player2.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { Data.instance.player2TrappedCount++; });
+            player1.GetComponent<PlayerDefeat>().onDefeat.AddListener(() => { EndRound(false); });
+            player2.GetComponent<PlayerDefeat>().onDefeat.AddListener(() => { EndRound(true); });
+        }
         else
             Debug.LogWarning("Multiple GameManager instances");
+            
     }
 
-    private void OnEnable() {
-        player1.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { player1TrappedCount++; });
-        player2.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { player2TrappedCount++; });
-        player1.GetComponent<PlayerDefeat>().onDefeat.AddListener(() => { EndRound(false); });
-        player2.GetComponent<PlayerDefeat>().onDefeat.AddListener(() => { EndRound(true); });
-    }
-
-    private void Start()
-    {
-        StartFight();
+    private void Start() {
+        if(!Data.instance.isFightActive)
+            StartFight();
     }
 
     private void Update() {
-        if(!isFightActive) return;
+        if(!Data.instance.isFightActive) return;
 
-        fightCountdown -= Time.deltaTime;
-        timerText.text = Mathf.Floor(fightCountdown / 60f).ToString() + " : " + Mathf.Floor(fightCountdown % 60f).ToString();
+        Data.instance.fightCountdown -= Time.deltaTime;
+        timerText.text = Mathf.Floor(Data.instance.fightCountdown / 60f).ToString() + " : " + Mathf.Floor(Data.instance.fightCountdown % 60f).ToString();
 
-        if(fightCountdown <= 0f)
-            EndRound(player1TrappedCount >= player2TrappedCount);
+        if(Data.instance.fightCountdown <= 0f)
+            EndFight(Data.instance.player1TrappedCount >= Data.instance.player2TrappedCount);
     }
 
     public void LoadData(int skinOneID, BubbleType weaponOne, int skinTwoID, BubbleType weaponTwo)
     {
-        _playerOneSkinID = skinOneID;
-        _playerTwoSkinID = skinTwoID;
+        Data.instance.playerOneSkinID = skinOneID;
+        Data.instance.playerTwoSkinID = skinTwoID;
         // @todo Load right animations depending of the skin
 
         player1.GetComponent<BubbleShooter>().bubbleType = weaponOne;
@@ -88,45 +62,44 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartFight() {
-        player1Score = 0;
-        player2Score = 0;
-        player1TrappedCount = 0;
-        player2TrappedCount = 0;
+        Data.instance.player1Score = 0;
+        Data.instance.player2Score = 0;
+        Data.instance.player1TrappedCount = 0;
+        Data.instance.player2TrappedCount = 0;
 
-        fightCountdown = fightDuration;
+        Data.instance.fightCountdown = fightDuration;
         
-        StartRound();
-
-        isFightActive = true;
+        Data.instance.isFightActive = true;
     }
 
     void StartRound() {
-        player1.GetComponent<Transform>().position = player1Spawn.position;
-        player2.GetComponent<Transform>().position = player2Spawn.position;
-
-        player1.GetComponent<BubbleGauge>().Init();
-        player2.GetComponent<BubbleGauge>().Init();
-
-        timeScale = 1f;
-        // reset bubble
+        Data.instance.isFightActive = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void EndFight(bool hasPlayer1Won) {
-        isFightActive = false;
+        Data.instance.isFightActive = false;
 
         // switch to EndScreenScene -> back to Character choice
     }
 
     void EndRound(bool hasPlayer1Won) {
-        player1Score += hasPlayer1Won? 1 : 0;
-        player2Score += hasPlayer1Won? 0 : 1;
+        if(!Data.instance.isFightActive) return;
+        Data.instance.player1Score += hasPlayer1Won? 1 : 0;
+        Data.instance.player2Score += hasPlayer1Won? 0 : 1;
 
-        if(player1Score == roundToWinCount)
+        
+        _gameOverCanvas.gameObject.SetActive(true);
+        _winnerText.text = Data.instance.player1Score.ToString() + " - " + Data.instance.player2Score.ToString();
+        gameObject.SetActive(false);
+
+        if(Data.instance.player1Score == roundToWinCount)
             EndFight(true);
-        else if(player2Score == roundToWinCount)
+        else if(Data.instance.player2Score == roundToWinCount)
             EndFight(false);
-        else
-            timeScale = 0.5f;
-            Invoke("StartRound", 1f);
+        else {
+            Data.instance.isFightActive = false;
+            Invoke("StartRound", 3f);
+        }
     }
 }
