@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af86d9d30673424d88618b545f6f5a8, type: 3}
   m_Name: Marble
   m_EditorClassIdentifier: 
-  description: "Marble\\nUne Grosse bulle destructrice qui m\xE8nera votre adversaire
-    \xE0 sa perte.\\nFire rate : 0.1\\nShoot Force : 10\\nBurst Count : 5\\nDispersion
-    : Very Low"
+  description: "Marble\\nUne grosse bulle destructrice qui m\xE8nera votre adversaire
+    \xE0 sa perte.\\nFire rate : Very Low\\nShoot Force : 2\\nBurst Count : 1\\nDispersion
+    : None "
   prefab: {fileID: 6366514507540186723, guid: 5af5c1cd658381d43a902130247be98b, type: 3}
-  sizeThreshold: {x: 0.9, y: 1.1}
+  sizeThreshold: {x: 0.95, y: 1.1}
   gravityThreshold: {x: 0, y: 0}
   dispersionThreshold: {x: 0, y: 0}
-  shootForce: 3
+  shootForce: 2
   fireRate: 2
   burstCount: 1

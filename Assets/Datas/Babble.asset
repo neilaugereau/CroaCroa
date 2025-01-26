@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af86d9d30673424d88618b545f6f5a8, type: 3}
+  m_Name: Babble
+  m_EditorClassIdentifier: 
+  description: 'Babble\nUne bulle chill, elle prend son temps mais fait son boulot.\nFire
+    rate : Normal\nShoot Force : 10\nBurst Count : 5\nDispersion : Medium '
+  prefab: {fileID: 6366514507540186723, guid: 1cb6663e2adf53a4c97409b6115ad155, type: 3}
+  sizeThreshold: {x: 0.9, y: 1.1}
+  gravityThreshold: {x: -0.3, y: 0.3}
+  dispersionThreshold: {x: -0.1, y: 0.1}
+  shootForce: 10
+  fireRate: 0.2
+  burstCount: 5
