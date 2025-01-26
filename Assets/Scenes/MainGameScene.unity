@@ -171,6 +171,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3857189190814610324, guid: 3e00c44d73dd4c14f908eb26618b911b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9928771
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857189190814610324, guid: 3e00c44d73dd4c14f908eb26618b911b, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0017550439
+      objectReference: {fileID: 0}
     - target: {fileID: 5382547913289210212, guid: 3e00c44d73dd4c14f908eb26618b911b, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -667,6 +675,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7137788436367226047, guid: 478a6f55548289a4eaa5b9bbd0e41418, type: 3}
+      propertyPath: m_Size.x
+      value: 1.045804
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137788436367226047, guid: 478a6f55548289a4eaa5b9bbd0e41418, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.022902042
+      objectReference: {fileID: 0}
     - target: {fileID: 8304036151084615218, guid: 478a6f55548289a4eaa5b9bbd0e41418, type: 3}
       propertyPath: m_Name
       value: Wall
@@ -898,6 +914,14 @@ PrefabInstance:
     - target: {fileID: 6705736184768222477, guid: 478a6f55548289a4eaa5b9bbd0e41418, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137788436367226047, guid: 478a6f55548289a4eaa5b9bbd0e41418, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0485443
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137788436367226047, guid: 478a6f55548289a4eaa5b9bbd0e41418, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.024272159
       objectReference: {fileID: 0}
     - target: {fileID: 8304036151084615218, guid: 478a6f55548289a4eaa5b9bbd0e41418, type: 3}
       propertyPath: m_Name
@@ -1509,12 +1533,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1927007880402997469, guid: 3783fd2c72d30554a81fc5d48e7c05c9, type: 3}
-      propertyPath: m_Sprite
-      value: 
+      propertyPath: m_Size.x
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 1927007880402997469, guid: 3783fd2c72d30554a81fc5d48e7c05c9, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927007880402997469, guid: 3783fd2c72d30554a81fc5d48e7c05c9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1854112694055690952, guid: de568a9e19d814d41b38a107a5371c26, type: 3}
+    - target: {fileID: 1927007880402997469, guid: 3783fd2c72d30554a81fc5d48e7c05c9, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4895957866145458717, guid: 3783fd2c72d30554a81fc5d48e7c05c9, type: 3}
       propertyPath: m_SurfaceArc
@@ -1567,6 +1599,10 @@ PrefabInstance:
     - target: {fileID: 9104944462244800145, guid: 3783fd2c72d30554a81fc5d48e7c05c9, type: 3}
       propertyPath: m_Name
       value: Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 9104944462244800145, guid: 3783fd2c72d30554a81fc5d48e7c05c9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
