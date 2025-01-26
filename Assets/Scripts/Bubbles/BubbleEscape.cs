@@ -63,6 +63,6 @@ public class BubbleEscape : MonoBehaviour
         animator.SetBool("isBubbled", false);
         Destroy(_tempBubbleBubbled);
         _tempBubbleBubbled = null;
-        //bubbleGauge.BubbleSmash();
+        bubbleGauge.BubbleSmash();
     }
 }

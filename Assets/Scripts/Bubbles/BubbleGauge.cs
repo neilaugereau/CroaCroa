@@ -47,11 +47,12 @@ public class BubbleGauge : MonoBehaviour
     public void BubbleSmash()
     {
         isBubbled = false;
-        _gauge = _gaugeThreshold;
+        Gauge = 0f;
+        //_gauge = _gaugeThreshold;
         
-        if (_gaugeThreshold < 75f)
-            _gaugeThreshold += 25f;
-        else
-            _gaugeThreshold = 75f;
+        //if (_gaugeThreshold < 75f)
+        //    _gaugeThreshold += 25f;
+        //else
+        //    _gaugeThreshold = 75f;
     }
 }
