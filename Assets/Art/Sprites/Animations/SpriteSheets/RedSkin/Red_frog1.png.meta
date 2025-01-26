@@ -187,7 +187,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: frog1_0
+      name: Red_frog1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -200,16 +200,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 99a050788c0ce03b0800000000000000
-      internalID: -5544282123755255143
+      spriteID: 8819820d99e73d44c84a00ad1447725a
+      internalID: 172437052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: frog1_1
+      name: Red_frog1_1
       rect:
         serializedVersion: 2
         x: 60
@@ -222,16 +222,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4236b06da4f720830800000000000000
-      internalID: 4035928175472763684
+      spriteID: 9bfc1994e1208a84fbbe8c925d7104d2
+      internalID: -364947883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: frog1_2
+      name: Red_frog1_2
       rect:
         serializedVersion: 2
         x: 120
@@ -244,16 +244,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 90d8ebb1cd9444ed0800000000000000
-      internalID: -2430736689166119671
+      spriteID: 829455af831f9544894a133ec90643a5
+      internalID: -1029847212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: frog1_3
+      name: Red_frog1_3
       rect:
         serializedVersion: 2
         x: 180
@@ -266,10 +266,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 29b405f30f8cb04e0800000000000000
-      internalID: -2014295474138231918
+      spriteID: 62346f7710056a84bb61539aaa946ce8
+      internalID: 979780498
       vertices: []
       indices: 
       edges: []
@@ -288,10 +288,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      frog1_0: -5544282123755255143
-      frog1_1: 4035928175472763684
-      frog1_2: -2430736689166119671
-      frog1_3: -2014295474138231918
+      Red_frog1_0: 172437052
+      Red_frog1_1: -364947883
+      Red_frog1_2: -1029847212
+      Red_frog1_3: 979780498
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
