@@ -11,11 +11,16 @@ public class BubbleEscape : MonoBehaviour
     
     private BubbleGauge bubbleGauge;
     private Animator animator;
+    private AudioSource _audioSource;
+    
+    [SerializeField]
+    private AudioClip _bubbledSound;
     
     private void Start()
     {
         bubbleGauge = GetComponent<BubbleGauge>();
         animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void FixedUpdate()
@@ -25,6 +30,7 @@ public class BubbleEscape : MonoBehaviour
             GetComponent<PlayerController>().canMove = false;
             GetComponent<SpriteRenderer>().sortingOrder = 0;
             animator.SetBool("isBubbled", true);
+            _audioSource.PlayOneShot(_bubbledSound, 0.9f);
             _tempBubbleBubbled = Instantiate(_bubbleBubbled, transform.position, Quaternion.identity, transform );
         }
     }

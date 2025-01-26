@@ -9,7 +9,11 @@ public class PlayerController : MonoBehaviour
     private PlayerInput _playerInput;
     [SerializeField]
     private bool _isPlayerOne;
-
+    
+    private AudioSource _audioSource;
+    [SerializeField]
+    private AudioClip _jumpSound;
+    
     public bool IsPlayerOne => _isPlayerOne;
 
     [SerializeField]
@@ -20,7 +24,6 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask platformLayer;
     [SerializeField]
-
 
     private Vector2 move;
 
@@ -67,6 +70,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         collider2d = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -130,6 +134,7 @@ public class PlayerController : MonoBehaviour
         if (_isGrounded && _jumpState == JumpState.CanJump)
         {
             _jumpState = JumpState.Jumping;
+            _audioSource.PlayOneShot(_jumpSound, 0.7f);
             StopCoroutine(Dashed());
             _dashState = DashState.CanDash;
             rb.linearVelocityY = 0;
