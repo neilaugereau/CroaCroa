@@ -87,7 +87,17 @@ public class CharacterSelection : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        LoadData();
         UpdateUI();
+    }
+
+    private void LoadData()
+    {
+        string[] saveChoices = PlayerPrefs.GetString("Choices", "0-0-1-1").Split('-');
+        PlayerOneSkinID = int.Parse(saveChoices[0]);
+        WeaponOneID = int.Parse(saveChoices[1]);
+        PlayerTwoSkinID = int.Parse(saveChoices[2]);
+        WeaponTwoID = int.Parse(saveChoices[3]);
     }
 
     public void PlayerOneChoice(InputAction.CallbackContext context)
@@ -117,14 +127,16 @@ public class CharacterSelection : MonoBehaviour
         _playerOneSkin.sprite = _playerSkins[PlayerOneSkinID];
         _playerTwoSkin.sprite = _playerSkins[PlayerTwoSkinID];
         _weaponOneSprite.sprite = _bubblesWeapons[WeaponOneID].prefab.GetComponent<SpriteRenderer>().sprite;
-        _weaponTwoSprite.sprite = _bubblesWeapons[WeaponTwoID].prefab.GetComponent<SpriteRenderer>().sprite;
+        _weaponOneSprite.color = _bubblesWeapons[WeaponOneID].prefab.GetComponent<SpriteRenderer>().color;
         _weaponOneInfo.text = _bubblesWeapons[WeaponOneID].description;
+        _weaponTwoSprite.sprite = _bubblesWeapons[WeaponTwoID].prefab.GetComponent<SpriteRenderer>().sprite;
+        _weaponTwoSprite.color = _bubblesWeapons[WeaponTwoID].prefab.GetComponent<SpriteRenderer>().color;
         _weaponTwoInfo.text = _bubblesWeapons[WeaponTwoID].description;
     }
 
     public void Play()
     {
-        //GameManager.instance.LoadData(PlayerOneSkinID, _bubblesWeapons[WeaponOneID], PlayerTwoSkinID, _bubblesWeapons[WeaponTwoID]);
+        PlayerPrefs.SetString("Choices", $"{_playerOneSkinID}-{_weaponOneID}-{_playerTwoSkinID}-{_weaponTwoID}");
         SceneManager.LoadScene("MainGameScene");
         Debug.Log("PLAY");
     }

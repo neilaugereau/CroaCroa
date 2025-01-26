@@ -420,6 +420,16 @@ MonoBehaviour:
   roundToWinCount: 3
   player1: {fileID: 455469580}
   player2: {fileID: 74664490}
+  animators:
+  - {fileID: 9100000, guid: 18b72ab3a00a99e4d854e6fb5d229d2f, type: 2}
+  - {fileID: 22100000, guid: bb14651a3b625b548bb40f2103b770ec, type: 2}
+  - {fileID: 22100000, guid: 4deb6d2eaea61364e91f3251e905ada9, type: 2}
+  - {fileID: 22100000, guid: 08f1164e357c1264880897a9fc287500, type: 2}
+  bubbles:
+  - {fileID: 11400000, guid: 8af6c8d5cd8833d4aa94268367c5b00f, type: 2}
+  - {fileID: 11400000, guid: 02130187ad3e6c5408ee18bac3e2a1ec, type: 2}
+  - {fileID: 11400000, guid: 0d1ca054bf3047546b7b8d6b7b71f995, type: 2}
+  - {fileID: 11400000, guid: aebbcabcc8251f34cad62bee7a678ba8, type: 2}
   timerText: {fileID: 1233196182}
 --- !u!4 &147777401
 Transform:
