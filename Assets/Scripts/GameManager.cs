@@ -28,20 +28,15 @@ public class GameManager : MonoBehaviour
     private void Awake() {
         if(instance == null) {
             instance = this;
-            
-            
+            player1.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { Data.instance.player1TrappedCount++; });
+            player2.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { Data.instance.player2TrappedCount++; });
+            player1.GetComponent<PlayerDefeat>().onDefeat.AddListener(() => { EndRound(false); });
+            player2.GetComponent<PlayerDefeat>().onDefeat.AddListener(() => { EndRound(true); });
+
         }
         else
             Debug.LogWarning("Multiple GameManager instances");
             
-    }
-
-    private void Sub()
-    {
-        player1.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { Data.instance.player1TrappedCount++; });
-        player2.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { Data.instance.player2TrappedCount++; });
-        player1.GetComponent<PlayerDefeat>().onDefeat.AddListener(() => { EndRound(false); });
-        player2.GetComponent<PlayerDefeat>().onDefeat.AddListener(() => { EndRound(true); });
     }
 
     private void Start() {
