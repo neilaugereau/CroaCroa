@@ -74,9 +74,16 @@ public class PlayerController : MonoBehaviour
         if(canMove) {
             _isGrounded = IsGrounded();
 
+            if (_isGrounded && !Physics2D.IsTouchingLayers(collider2d, platformLayer))
+                collider2d.isTrigger = false;
+
             if (_dashState == DashState.CantDash && _isGrounded)
                 _dashState = DashState.CanDash;
-            
+
+            if (rb.linearVelocityY <= _settingsSO.AirGravitySill)
+            {
+                rb.linearVelocityY -= _settingsSO.AirGravityForce * Time.deltaTime * (_dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : 1f);
+            }
 
             rb.gravityScale = _dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : _settingsSO.MovingGravityScale;
             transform.Translate(move * _settingsSO.Speed * (_jumpState == JumpState.Jumping ? _settingsSO.AirSpeedCoef : 1f) * Time.deltaTime);
@@ -111,10 +118,6 @@ public class PlayerController : MonoBehaviour
                 if (_isGrounded && rb.linearVelocityY <= 0f)
                 {
                     _jumpState = JumpState.CanJump;
-                }
-                if(rb.linearVelocityY <= _settingsSO.AirGravitySill)
-                {
-                    rb.linearVelocityY -= _settingsSO.AirGravityForce * Time.deltaTime * (_dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : 1f);
                 }
                 break;
 
