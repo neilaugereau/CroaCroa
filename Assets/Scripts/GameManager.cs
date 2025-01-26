@@ -31,9 +31,6 @@ public class GameManager : MonoBehaviour
     private BubbleType _playerTwoWeapon;
     private int _playerOneSkinID;
     private int _playerTwoSkinID;
-
-    private bool hasPlayer1Scored;
-    private bool hasPlayer2Scored;
     private int player1Score;
     private int player2Score;
     private int player1TrappedCount;
@@ -41,22 +38,32 @@ public class GameManager : MonoBehaviour
 
     private bool isFightActive = false;
 
-    [HideInInspector]
-    public float fightCountdown;
+    private float fightCountdown;
+
+    private float timeScale = 1f;
+
+    public float DeltaTime {
+        get => timeScale * Time.deltaTime;
+
+        private set => timeScale = value;
+    }
 
     private void Awake() {
         if(instance == null)
             instance = this;
-
-            // sub to player score event
-            // sub to player trapped event
         else
             Debug.LogWarning("Multiple GameManager instances");
     }
 
+    private void OnEnable() {
+        player1.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { player1TrappedCount++; });
+        player2.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { player2TrappedCount++; });
+        player1.GetComponent<PlayerDefeat>().onDefeat.AddListener(() => { EndRound(false); });
+        player2.GetComponent<PlayerDefeat>().onDefeat.AddListener(() => { EndRound(true); });
+    }
+
     private void Start()
     {
-        fightCountdown = fightDuration;
         StartFight();
     }
 
@@ -66,11 +73,7 @@ public class GameManager : MonoBehaviour
         fightCountdown -= Time.deltaTime;
         timerText.text = Mathf.Floor(fightCountdown / 60f).ToString() + " : " + Mathf.Floor(fightCountdown % 60f).ToString();
 
-        if(hasPlayer1Scored)
-            EndRound(true);
-        else if(hasPlayer2Scored)
-            EndRound(false);
-        else if(fightCountdown <= 0f)
+        if(fightCountdown <= 0f)
             EndRound(player1TrappedCount >= player2TrappedCount);
     }
 
@@ -104,6 +107,7 @@ public class GameManager : MonoBehaviour
         player1.GetComponent<BubbleGauge>().Init();
         player2.GetComponent<BubbleGauge>().Init();
 
+        timeScale = 1f;
         // reset bubble
     }
 
@@ -122,6 +126,7 @@ public class GameManager : MonoBehaviour
         else if(player2Score == roundToWinCount)
             EndFight(false);
         else
-            StartRound();
+            timeScale = 0.5f;
+            Invoke("StartRound", 1f);
     }
 }

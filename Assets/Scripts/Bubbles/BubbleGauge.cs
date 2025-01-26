@@ -7,6 +7,8 @@ public class BubbleGauge : MonoBehaviour
     private float _gauge;
     private float _gaugeThreshold = 0f;
     public bool isBubbled;
+
+    public UnityEvent onBubbled;
     
     public float Gauge
     {
@@ -21,6 +23,7 @@ public class BubbleGauge : MonoBehaviour
             {
                 _gauge = 100f;
                 isBubbled = true;
+                onBubbled.Invoke();
             }
             else
             {
@@ -30,6 +33,7 @@ public class BubbleGauge : MonoBehaviour
     }
 
     public void Init() {
+        isBubbled = false;
         Gauge = 0f;
     }
 
