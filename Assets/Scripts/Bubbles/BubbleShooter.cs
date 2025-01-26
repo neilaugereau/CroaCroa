@@ -25,10 +25,11 @@ public class BubbleShooter : MonoBehaviour
     private IEnumerator ShootBurst()
     {
         isShooting = true;
-        animator.SetBool("isShooting", true);
 
         for (int i = 0; i < bubbleType.burstCount; i++)
         {
+            animator.SetTrigger("isShooting");
+            
             // Créer une bulle au point de tir
             GameObject bubble = Instantiate(bubbleType.prefab, shootPoint.position, Quaternion.identity);
             bubble.GetComponent<BubbleManager>().owner = gameObject;
@@ -47,8 +48,6 @@ public class BubbleShooter : MonoBehaviour
             // Attendre avant de tirer la prochaine bulle
             yield return new WaitForSeconds(bubbleType.fireRate);
         }
-
         isShooting = false;
-        animator.SetBool("isShooting", false);
     }
 }
