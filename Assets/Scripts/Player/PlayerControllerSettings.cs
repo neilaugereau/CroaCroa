@@ -8,6 +8,8 @@ public class PlayerControllerSettings : ScriptableObject
     public float MovingGravityScale;
     public float JumpForce;
     public float AirGravityForce;
+    [Tooltip("Under which linear velocity Y the air force applies")]
+    public float AirGravitySill;
     public float DashDuration;
     public float DashForce;
     public float DashAirGravityScale;

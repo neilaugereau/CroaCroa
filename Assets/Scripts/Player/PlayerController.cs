@@ -111,7 +111,10 @@ public class PlayerController : MonoBehaviour
                 {
                     _jumpState = JumpState.CanJump;
                 }
-                rb.linearVelocityY -= _settingsSO.AirGravityForce * Time.deltaTime * (_dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : 1f);
+                if(rb.linearVelocityY <= _settingsSO.AirGravitySill)
+                {
+                    rb.linearVelocityY -= _settingsSO.AirGravityForce * Time.deltaTime * (_dashState == DashState.Dashing ? _settingsSO.DashAirGravityScale : 1f);
+                }
                 break;
 
             default:
