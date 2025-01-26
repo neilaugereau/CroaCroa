@@ -1397,6 +1397,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 15937536140373005, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 682380314593091866, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
       propertyPath: m_Name
       value: Player1
@@ -2011,6 +2015,10 @@ PrefabInstance:
     - target: {fileID: 15937536140373005, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
       propertyPath: m_DefaultActionMap
       value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 15937536140373005, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 682380314593091866, guid: 47f9ba6b3875fe649bfe406975a19209, type: 3}
       propertyPath: m_Name
