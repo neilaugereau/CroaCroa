@@ -47,9 +47,9 @@ public class BubbleGauge : MonoBehaviour
         isBubbled = false;
         _gauge = _gaugeThreshold;
         
-        if (_gaugeThreshold < 0.75f)
-            _gaugeThreshold += 0.25f;
+        if (_gaugeThreshold < 75f)
+            _gaugeThreshold += 25f;
         else
-            _gaugeThreshold = 0.75f;
+            _gaugeThreshold = 75f;
     }
 }

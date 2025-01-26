@@ -10,6 +10,8 @@ public class BubbleShooter : MonoBehaviour
     public BubbleType bubbleType;
 
     private Animator animator;
+
+    private BubbleGauge gauge;
     private AudioSource _audioSource;
     
     [SerializeField]
@@ -20,11 +22,12 @@ public class BubbleShooter : MonoBehaviour
     private void Awake() {
         animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
+        gauge = GetComponent<BubbleGauge>();
     }
     
     public void ShootingBurst(InputAction.CallbackContext context)
     {
-        if(!isShooting)
+        if(!isShooting && !gauge.isBubbled)
             StartCoroutine(ShootBurst());
     }
     private IEnumerator ShootBurst()

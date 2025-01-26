@@ -23,8 +23,6 @@ public class GameManager : MonoBehaviour
     private void Awake() {
         if(instance == null) {
             instance = this;
-
-            Debug.Log("first time load");
             
             player1.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { Data.instance.player1TrappedCount++; });
             player2.GetComponent<BubbleGauge>().onBubbled.AddListener(() => { Data.instance.player2TrappedCount++; });
