@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<BubbleType> bubbles;
     [SerializeField] private TMP_Text timerText;
+    [SerializeField] private TMP_Text _scoreText;
 
     private void Awake() {
         if(instance == null) {
@@ -40,8 +41,16 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start() {
-        if(!Data.instance.isFightActive)
+        if (!Data.instance.isFightActive)
             StartFight();
+        else
+            LoadRound();
+    }
+
+    private void LoadRound()
+    {
+        LoadData();
+        _scoreText.text = $"{Data.instance.player1Score} - {Data.instance.player2Score}";
     }
 
     private void Update() {
@@ -54,8 +63,14 @@ public class GameManager : MonoBehaviour
             EndFight(Data.instance.player1TrappedCount >= Data.instance.player2TrappedCount);
     }
 
-    public void LoadData(int skinOneID, int weaponOneID, int skinTwoID, int weaponTwoID)
+    public void LoadData()
     {
+        string[] choicesData = PlayerPrefs.GetString("Choices", "0-0-1-1").Split('-');
+
+        int skinOneID = int.Parse(choicesData[0]);
+        int weaponOneID = int.Parse(choicesData[1]);
+        int skinTwoID = int.Parse(choicesData[2]);
+        int weaponTwoID = int.Parse(choicesData[3]);
         Data.instance.playerOneSkinID = skinOneID;
         Data.instance.playerTwoSkinID = skinTwoID;
 
@@ -76,8 +91,7 @@ public class GameManager : MonoBehaviour
         
         Data.instance.isFightActive = true;
 
-        string[] choicesData = PlayerPrefs.GetString("Choices","0-0-1-1").Split('-');
-        LoadData(int.Parse(choicesData[0]), int.Parse(choicesData[1]), int.Parse(choicesData[2]), int.Parse(choicesData[3]));
+        LoadData();
     }
 
     void StartRound() {
@@ -99,6 +113,7 @@ public class GameManager : MonoBehaviour
         
         _gameOverCanvas.gameObject.SetActive(true);
         _winnerText.text = Data.instance.player1Score.ToString() + " - " + Data.instance.player2Score.ToString();
+        _scoreText.text = _winnerText.text;
         gameObject.SetActive(false);
 
         if(Data.instance.player1Score == roundToWinCount)

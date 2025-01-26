@@ -9,15 +9,17 @@ public class BubbleGauge : MonoBehaviour
     public bool isBubbled;
 
     public UnityEvent onBubbled;
+    public UnityEvent onBubbledOut;
     
     public float Gauge
     {
         get => _gauge;
         private set
         {
-            if (value < 0f)
+            if (value <= 0f)
             {
                 _gauge = 0f;
+                onBubbledOut.Invoke();
             }
             else if(value >= 100f)
             {
@@ -45,11 +47,12 @@ public class BubbleGauge : MonoBehaviour
     public void BubbleSmash()
     {
         isBubbled = false;
-        _gauge = _gaugeThreshold;
+        Gauge = 0f;
+        //_gauge = _gaugeThreshold;
         
-        if (_gaugeThreshold < 75f)
-            _gaugeThreshold += 25f;
-        else
-            _gaugeThreshold = 75f;
+        //if (_gaugeThreshold < 75f)
+        //    _gaugeThreshold += 25f;
+        //else
+        //    _gaugeThreshold = 75f;
     }
 }

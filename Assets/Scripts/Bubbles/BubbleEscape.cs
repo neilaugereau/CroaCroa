@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BubbleEscape : MonoBehaviour
 {
@@ -15,12 +16,18 @@ public class BubbleEscape : MonoBehaviour
     
     [SerializeField]
     private AudioClip _bubbledSound;
+
+    [SerializeField]
+    private float _mashForce;
+    [SerializeField,Tooltip("% en moins multiplié aux nombres de fois emprisonnés")]
+    private float _mashMalusCoef;
     
     private void Start()
     {
         bubbleGauge = GetComponent<BubbleGauge>();
         animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
+        GetComponent<BubbleGauge>().onBubbledOut.AddListener(EscapeBubble);
     }
 
     public void FixedUpdate()
@@ -35,18 +42,17 @@ public class BubbleEscape : MonoBehaviour
         }
     }
 
-    public void TryEscape() {
-        if (bubbleGauge.isBubbled)
+    public void TryEscape(InputAction.CallbackContext context) 
+    {
+        if (bubbleGauge.isBubbled && context.performed)
         {
-            currentPresses++;
+            float mashDamages = _mashForce * (1 - (((GetComponent<PlayerController>().IsPlayerOne ? Data.instance.player1TrappedCount : Data.instance.player2TrappedCount)-1) * _mashMalusCoef / 100));
+            Debug.Log(mashDamages);
+            GetComponent<BubbleGauge>().Hit(-mashDamages);
+
             StartCoroutine(GetComponent<ShakeEffect>().Shake(0.1f, 0.1f));
             if(_tempBubbleBubbled != null && currentPresses <= pressesNeeded -1)
                 StartCoroutine(_tempBubbleBubbled.GetComponent<ShakeEffect>().Shake(0.1f, 0.1f));
-            if (currentPresses >= pressesNeeded)
-            {
-                currentPresses = 0;
-                EscapeBubble();
-            }
         }
     }
 

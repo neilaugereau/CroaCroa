@@ -38,7 +38,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2021345063918392525}
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -5544282123755255143, guid: b7c54e9ceeb1a6446829274d01f15815, type: 3}
+  m_Sprite: {fileID: 1116602786, guid: c65ee49bdbf278e4ea8f14b9940c31c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,7 +96,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &9188269345575737927
@@ -246,7 +246,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2949708776699343992}
         m_TargetAssemblyTypeName: BubbleEscape, Assembly-CSharp
         m_MethodName: TryEscape
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -362,7 +362,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2949708776699343992}
         m_TargetAssemblyTypeName: BubbleEscape, Assembly-CSharp
         m_MethodName: TryEscape
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -504,6 +504,9 @@ MonoBehaviour:
   onBubbled:
     m_PersistentCalls:
       m_Calls: []
+  onBubbledOut:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2949708776699343992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,6 +523,8 @@ MonoBehaviour:
   currentPresses: 0
   _bubbleBubbled: {fileID: 3592324653714009050, guid: 06a355c24fe93a2448ba4b79b9400f13, type: 3}
   _bubbledSound: {fileID: 8300000, guid: c19928ed0ef3cad4a97477c3acb42caa, type: 3}
+  _mashForce: 10
+  _mashMalusCoef: 20
 --- !u!114 &1763157481082200668
 MonoBehaviour:
   m_ObjectHideFlags: 0

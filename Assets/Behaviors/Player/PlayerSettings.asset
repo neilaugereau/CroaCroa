@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
   Speed: 8
-  AirSpeedCoef: 0.7
+  AirSpeedCoef: 1.2
   MovingGravityScale: 1
-  JumpForce: 15
+  JumpForce: 18
   AirGravityForce: 30
-  AirGravitySill: 30
+  AirGravitySill: 18
   DashDuration: 0.15
   DashForce: 20
   DashAirGravityScale: 0
