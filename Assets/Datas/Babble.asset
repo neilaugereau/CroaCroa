@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af86d9d30673424d88618b545f6f5a8, type: 3}
   m_Name: Babble
   m_EditorClassIdentifier: 
-  description: 'Babble\nUne bulle chill, elle prend son temps mais fait son boulot.\nFire
+  description: 'Babble\nA chill bubble, it takes its time but does its job.\nFire
     rate : Normal\nShoot Force : 10\nBurst Count : 5\nDispersion : Medium '
   prefab: {fileID: 6366514507540186723, guid: 1cb6663e2adf53a4c97409b6115ad155, type: 3}
   sizeThreshold: {x: 0.9, y: 1.1}
