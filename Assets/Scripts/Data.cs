@@ -29,4 +29,11 @@ public class Data : MonoBehaviour
         player1TrappedCount = 0;
         player2TrappedCount = 0;
     }
+
+    public void MatchReset()
+    {
+        player1Score = 0;
+        player2Score = 0;
+        RoundReset();
+    }
 }

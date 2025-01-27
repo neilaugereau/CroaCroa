@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviour
 
     private void EndMatch()
     {
+        Data.instance.MatchReset();
         SceneManager.LoadScene("PlayerSelection");
     }
 
