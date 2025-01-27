@@ -5,7 +5,6 @@ using UnityEngine.Events;
 public class BubbleGauge : MonoBehaviour
 {
     private float _gauge;
-    private float _gaugeThreshold = 0f;
     public bool isBubbled;
 
     public UnityEvent onBubbled;
@@ -16,7 +15,7 @@ public class BubbleGauge : MonoBehaviour
         get => _gauge;
         private set
         {
-            if (value <= 0f)
+            if (value <= 0f && isBubbled)
             {
                 _gauge = 0f;
                 onBubbledOut.Invoke();
@@ -48,11 +47,5 @@ public class BubbleGauge : MonoBehaviour
     {
         isBubbled = false;
         Gauge = 0f;
-        //_gauge = _gaugeThreshold;
-        
-        //if (_gaugeThreshold < 75f)
-        //    _gaugeThreshold += 25f;
-        //else
-        //    _gaugeThreshold = 75f;
     }
 }

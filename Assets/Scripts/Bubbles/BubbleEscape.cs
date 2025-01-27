@@ -44,10 +44,9 @@ public class BubbleEscape : MonoBehaviour
 
     public void TryEscape(InputAction.CallbackContext context) 
     {
-        if (bubbleGauge.isBubbled && context.performed && Data.instance.isFightActive)
+        if (bubbleGauge.isBubbled && context.performed && Data.instance.isFightActive && !GetComponent<PlayerController>().canMove)
         {
             float mashDamages = _mashForce * (1 - (((GetComponent<PlayerController>().IsPlayerOne ? Data.instance.player1TrappedCount : Data.instance.player2TrappedCount)-1) * _mashMalusCoef / 100));
-            Debug.Log(mashDamages);
             GetComponent<BubbleGauge>().Hit(-mashDamages);
 
             StartCoroutine(GetComponent<ShakeEffect>().Shake(0.1f, 0.1f));
@@ -56,7 +55,7 @@ public class BubbleEscape : MonoBehaviour
         }
     }
 
-    void EscapeBubble()
+    private void EscapeBubble()
     {
         GetComponent<PlayerController>().canMove = true;
         GetComponent<SpriteRenderer>().sortingOrder = 2;

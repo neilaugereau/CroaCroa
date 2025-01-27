@@ -138,7 +138,6 @@ public class CharacterSelection : MonoBehaviour
     {
         PlayerPrefs.SetString("Choices", $"{_playerOneSkinID}-{_weaponOneID}-{_playerTwoSkinID}-{_weaponTwoID}");
         SceneManager.LoadScene("MainGameScene");
-        Debug.Log("PLAY");
     }
 
     public void Back()
